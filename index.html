@@ -20,9 +20,10 @@
                 <img id="logo" src="assets/note-icon.png" alt="">
             </div>
             <div id="nav-main">
-                <span><img src="assets/home.png" alt="Home"><p>Home</p></span>
-                <span><img src="assets/clock.png" alt="Clock"><p>History</p></span>
-                <span><img src="assets/settings.png" alt="Settings"><p>Settings</p></span>
+                <span class="nav-main-btns"><img src="assets/home.png" alt="Home"><p>Home</p></span>
+                <span class="nav-main-btns"><img src="assets/clock.png" alt="Clock"><p>History</p></span>
+                <span class="nav-main-btns"><img src="assets/settings.png" alt="Settings"><p>Settings</p></span>
+                <span class="nav-main-btns"><img src="assets/info.png" alt=""><p>About</p></span>
             </div>
         </nav>
         <header>
@@ -33,17 +34,26 @@
                     </label>
                     <input type="text" id="search-input">
                 </div>
-                <div id="header-small-pfp"></div>
+                <div id="header-small-pfp">
+                    <img src="assets/rigby-draw.jpg" alt="" id="small-pfp">
+                    <p id="small-name">Túlio Oliveira</p>
+                </div>
             </section>
-            <section class="big-header-section">
-                <div id="header-big-pfp"></div>
-                <div id="header-txt"></div>
-                <div class="header-btns"></div>
+            <section id="big-header-section">
+                <div id="big-header-container">
+                    <div id="big-pfp">
+                        <img src="assets/rigby-draw.jpg" alt="">
+                    </div>
+                    <div id="header-txt">
+                    <div id="small-text">Hi there,</div>
+                    <div class="big-text">Túlio Oliveria <span class="big-text"><i>(@tulin404)</i></span></div>
+                    </div>
+                </div>
             </section>
         </header>
         <div id="dashboard">
             <section id="dashboard-main">
-                <div class="dashboard-titles">My notes</div>
+                <div class="dashboard-titles"><p>My notes</p><button><img src="assets/add.png" alt=""></button></div>
                 <div id="notes-container">
                     <div class="note">
                         <div class="note-body">
@@ -76,7 +86,7 @@
             </section>
             <section id="dashboard-side-features">
                 <div id="reminders-container">
-                    <div><p class="dashboard-titles">Reminders</p></div>
+                    <div class="dashboard-titles"><p>Reminders</p><img src="assets/add.png" alt=""></div>
                     <div id="reminders">
                         <div class="reminder-item">
                             <p class="reminder-item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis</p>
