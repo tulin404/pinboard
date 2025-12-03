@@ -247,7 +247,6 @@ header > section {
 .note-body {
     display: flex;
     flex-direction: column;
-
 }
 
 .note-title, .note-text {
@@ -262,6 +261,19 @@ header > section {
 .note-text {
     font-size: 15px;
     font-weight: 300;
+}
+
+#input-note {
+    z-index: 10;
+    display: flex;
+    position: absolute;
+    background-color: blueviolet;
+    height: 35dvw;
+    width: 35dvw;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* BODY OPACITY CLASS (applying as a class to be maintanable) */
@@ -341,5 +353,10 @@ body > *:not(nav):not(#ham-menu) {
         display: flex;
         transform: translateX(0px);
         transition: all 0.5s ease-in-out;
+    }
+
+    #input-note {
+        height: 350px;
+        width: 350px;
     }
 }
