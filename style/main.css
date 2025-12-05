@@ -343,7 +343,7 @@ header {
     }
 
     #ham-menu {
-        position: fixed;
+        position: absolute;
         z-index: 100;
         top: 20px;
         left: 16px;
@@ -378,5 +378,33 @@ header {
     #input-note {
         height: 350px;
         width: 350px;
+    }
+}
+
+@media (max-width: 435px) {
+    body {
+        grid-template-rows: 1fr 5fr;
+    }
+    header, #big-header-section {
+        height: min-content;
+    }
+    #dashboard {
+        height: 100%;
+        grid-row: 2 / 3;
+    }
+    #header-search {
+        padding: 0;
+    }
+    #big-header-section {
+        padding-top: 1rem;
+    }
+    #dashboard {
+        grid-template-columns: 4fr;
+    }
+    #reminders-title {
+        padding-top: 0.5rem;
+    }
+    #reminders-container * {
+        display: none;
     }
 }
