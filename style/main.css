@@ -309,8 +309,9 @@ header {
 
     nav {
         z-index: 3;
-        position: absolute;
-        height: 100%;
+        position: fixed;
+        inset: 0  auto 0 0;  
+        height: 100dvh;
         transform: translateX(-300px);
         transition: all 0.5s ease-in-out;
 
@@ -387,10 +388,6 @@ header {
     }
     header, #big-header-section {
         height: min-content;
-    }
-    #dashboard {
-        height: 100%;
-        grid-row: 2 / 3;
     }
     #header-search {
         padding: 0;
