@@ -19,6 +19,9 @@ const moon = document.getElementById('moon');
 const sun = document.getElementById('sun');
 const searchImg = document.getElementById('search-img');
 const addImg = document.querySelectorAll('.add-img');
+const clockImg = document.querySelectorAll('.clock-img');
+const trashImg = document.querySelectorAll('.trash-img');
+const starImg = document.querySelectorAll('.star-img');
 
 function checkTheme() {
     if (document.body.dataset.theme === 'dark') {
@@ -26,11 +29,17 @@ function checkTheme() {
         sun.classList.remove('active');
         searchImg.src = 'assets/search-dark.png';
         addImg.forEach(img => img.src = 'assets/add-dark.png');
+        starImg.forEach(img => img.src = 'assets/star-dark.png');
+        trashImg.forEach(img => img.src = 'assets/trash-dark.png');
+        clockImg.forEach(img => img.src = 'assets/clock-dark.png');
     } else {
         sun.classList.add('active');
         moon.classList.remove('active');
         searchImg.src = 'assets/search.png'
         addImg.forEach(img => img.src = 'assets/add.png');
+        starImg.forEach(img => img.src = 'assets/star.png');
+        trashImg.forEach(img => img.src = 'assets/trash.png');
+        clockImg.forEach(img => img.src = 'assets/clock.png');
     }
 };
 
