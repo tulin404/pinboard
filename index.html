@@ -16,7 +16,13 @@
 <body>
     <div id="input-reminder">
         <div id="input-reminder-body">
-            <textarea id="input-reminder-text"></textarea>
+            <div id="input-reminder-wrapper">
+                <textarea maxlength="50" id="input-reminder-text"></textarea>
+                <div id="reminder-counter">
+                    <div id="reminder-char-counter">0</div>
+                    <div id="reminder-max-counter">/50</div>
+                </div>
+            </div>
             <div id="input-reminder-btns">
                 <button id="input-reminder-cancel">Cancel</button>
                 <button id="input-reminder-sub">Add Reminder</button>
@@ -25,8 +31,20 @@
     </div>
     <div class="note" id="input-note">
         <div id="input-note-body">
-            <textarea maxlength="35" placeholder="Title" id="input-note-title"></textarea>
-            <textarea maxlength="400" placeholder="Text" id="input-note-text"></textarea>
+            <div id="title-wrapper">
+                <textarea maxlength="35" placeholder="Title" id="input-note-title"></textarea>
+                <div id="title-counter">
+                    <div id="title-char-counter">0</div>
+                    <div id="title-max-counter">/35</div>
+                </div>
+            </div>
+            <div id="text-wrapper">
+                <textarea maxlength="250" placeholder="Text" id="input-note-text"></textarea>
+                <div id="text-counter">
+                    <div id="text-char-counter">0</div>
+                    <div id="text-max-counter">/250</div>
+                </div>
+            </div>
             <div id="input-note-btns">
                 <button id="input-note-cancel">Cancel</button>
                 <button id="input-note-sub">Add Note</button>
@@ -85,14 +103,7 @@
         <section id="dashboard-side-features">
             <div id="reminders-container">
                 <div class="dashboard-titles"><p id="reminders-title">Reminders</p><button id="add-reminder-btn"><a href="#"><img class="add-img" src="assets/add.png" alt=""></a></button></div>
-                <div id="reminders">
-                    <div class="reminder-item">
-                        <p class="reminder-item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis</p>
-                    </div>
-                    <div class="reminder-item">
-                        <p class="reminder-item-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis</p>
-                    </div>
-                </div>
+                <div id="reminders"></div>
             </div>
             <div id="calendar"></div>
         </section>

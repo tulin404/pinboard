@@ -18,15 +18,16 @@ menu.addEventListener('click', () => {
 
 // THEME
 const themeBtn = document.getElementById('theme-switch');
-const moon = document.getElementById('moon');
-const sun = document.getElementById('sun');
-const searchImg = document.getElementById('search-img');
-const addImg = document.querySelectorAll('.add-img');
-const clockImg = document.querySelectorAll('.clock-img');
-const trashImg = document.querySelectorAll('.trash-img');
-const starImg = document.querySelectorAll('.star-img');
 
 function checkTheme() {
+    const moon = document.getElementById('moon');
+    const sun = document.getElementById('sun');
+    const searchImg = document.getElementById('search-img');
+    const addImg = document.querySelectorAll('.add-img');
+    const clockImg = document.querySelectorAll('.clock-img');
+    const trashImg = document.querySelectorAll('.trash-img');
+    const starImg = document.querySelectorAll('.star-img');
+
     if (document.body.dataset.theme === 'dark') {
         moon.classList.add('active');
         sun.classList.remove('active');
@@ -90,20 +91,24 @@ function clearNote() {
     inputNoteTitle.value = '';
     inputNoteText.value = '';
     inputNote.classList.remove('active');
+    inputNoteTitle.style.border = '';
+    inputNoteText.style.border = '';
     bodyNoNotes.forEach(e => e.classList.toggle('opacity'));
     body.classList.toggle('no-scroll');
+    textCounter.textContent = 0;
+    titleCounter.textContent = 0;
 }
 
-noteCancelBtn.addEventListener('click', () => {
-    clearNote();
-});
+noteCancelBtn.addEventListener('click', clearNote);
 
-reminderCancelBtn.addEventListener('click', () => {
+function clearReminder() {
     inputReminderText.value = '';
     inputReminder.classList.remove('active');
     bodyNoNotes.forEach(e => e.classList.toggle('opacity'));
     body.classList.toggle('no-scroll');
-});
+}
+
+reminderCancelBtn.addEventListener('click', clearReminder);
 
 // SUBMIT NOTE
 const subNoteBtn = document.getElementById('input-note-sub');
@@ -112,6 +117,7 @@ const notesContainer =  document.getElementById('notes-container');
 function createNewNote() {
     const newNote = document.createElement('div');
     newNote.classList.add('note');
+
     let inputNoteTitleValue = inputNoteTitle.value;
     let inputNoteTextValue = inputNoteText.value;
     if (!inputNoteTitleValue) {
@@ -121,6 +127,9 @@ function createNewNote() {
         inputNoteText.style.animation = 'shake 0.2s ease-in-out';
         inputNoteText.style.border = '1px solid red';
     } else {
+        const newDate = new Date();
+        const now = `${newDate.getDate()}/${newDate.getMonth() + 1}/${newDate.getFullYear()}`
+
         newNote.innerHTML = 
     `<div class="note-body">
         <p class="note-title">${inputNoteTitleValue}</p>
@@ -128,7 +137,7 @@ function createNewNote() {
     </div>
     <div class="note-bottom">
         <div class="note-date">
-            <button><img class="clock-img" src="assets/clock.png" alt=""></button>
+            <button><img class="clock-img" src="assets/clock.png" alt=""><p id="time">${now}</p></button>
         </div>
         <div class="note-buttons">
             <button><img class="star-img" src="assets/star.png" alt=""></button>
@@ -142,7 +151,58 @@ function createNewNote() {
     }
 };
 
-subNoteBtn.addEventListener('click', () => {
-    createNewNote();
+subNoteBtn.addEventListener('click', createNewNote);
+
+// SUBMIT REMINDER 
+const remindersContainer = document.getElementById('reminders');
+const subReminderBtn = document.getElementById('input-reminder-sub');
+
+function checkReminders() {
+    let remindersArray = Array.from(document.querySelectorAll('.reminder-item'));
+    if (remindersArray.length > 3) {
+        remindersContainer.lastChild.remove();
+    };
+};
+
+function createNewReminder() {
+    const newReminder = document.createElement('div');
+    newReminder.classList.add('reminder-item');
+
+    let inputReminderTextValue = inputReminderText.value;
+    if (!inputReminderTextValue) {
+        inputReminderText.style.animation = 'shake 0.2s ease-in-out';
+        inputReminderText.style.border = '1px solid red';
+    } else {
+        newReminder.innerHTML = `<p class="reminder-item-text">${inputReminderTextValue}</p>`;
+        remindersContainer.prepend(newReminder);
+        clearReminder();
+        checkReminders();
+    };
+};
+
+subReminderBtn.addEventListener('click', createNewReminder)
+
+// TYPING CHECK
+const titleCounter = document.getElementById('title-char-counter');
+const maxTitleCounter = document.getElementById('title-max-counter');
+
+inputNoteTitle.addEventListener('input', (e) => {
+    e.target.style.border = '';
+    titleCounter.textContent = e.target.value.length;
 });
 
+const textCounter = document.getElementById('text-char-counter');
+const maxTextCounter = document.getElementById('text-max-counter');
+
+inputNoteText.addEventListener('input', (e) => {
+    e.target.style.border = '';
+    textCounter.textContent = e.target.value.length;
+});
+
+const reminderCounter = document.getElementById('reminder-char-counter');
+const reminderMaxCounter = document.getElementById('reminder-max-counter');
+
+inputReminderText.addEventListener('input', (e) => {
+    e.target.style.border = '';
+    reminderCounter.textContent = e.target.value.length;
+});
