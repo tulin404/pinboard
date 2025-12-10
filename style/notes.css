@@ -12,11 +12,15 @@
     background-color: var(--note-bg-color);
     border-left: 8px solid #fca311;
     transform: translate(0, 0);
-    transition: transform 0.2s linear;
+    transition: all 0.4s ease; 
     box-shadow: 0 0 4px var(--notes-shadow);
 
     &:hover {
         transform: translate(-2px, -2px);
+    }
+    &.move {
+        opacity: 0;
+        transform: translateY(-10px);
     }
 }
 

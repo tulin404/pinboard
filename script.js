@@ -223,22 +223,22 @@ function favoriteNote(event) {
     let noteTarget = event.target.closest('.note');
     
     if(!noteTarget.classList.contains('fav')) {
+        noteAnimation(noteTarget);
         noteTarget.classList.add('fav');
         favNotesContainer.prepend(noteTarget);
-
         event.target.classList.add('marked-star');
         checkFavPadding();
         checkStarImg();
         checkThemeForStar();
     } else if (noteTarget.classList.contains('fav')){
+        noteAnimation(noteTarget);
         noteTarget.classList.remove('fav');
-        notesContainer.prepend(noteTarget)
-        let newArray = Array.from(document.querySelectorAll('[class="note"]'));
+        notesContainer.appendChild(noteTarget);
+        let newArray = Array.from(notesContainer.querySelectorAll('.note'));
         newArray.sort((a, b) => {
             return b.dataset.id - a.dataset.id;
         });
         newArray.forEach(note => notesContainer.appendChild(note));
-
         event.target.classList.remove('marked-star');
         checkFavPadding();
         checkStarImg();
@@ -289,4 +289,12 @@ function checkStarImg() {
             star.src = 'assets/star.png'
         }
     })
+};
+
+// ANIMATION
+function noteAnimation(note) {
+    note.classList.add('move');
+    setTimeout(() => {
+        note.classList.remove('move');
+    }, 10);
 };
