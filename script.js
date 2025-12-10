@@ -246,12 +246,22 @@ function favoriteNote(event) {
     };
 };
 
+// ERASE NOTE
+function eraseNote(event) {
+    const noteTarget = event.target.closest('.note');
+    noteTarget.remove();
+}
+
 
 // CHECK
+// EVENT DELEGATION
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('star-img')) {
         favoriteNote(e);
-    }
+    };
+    if (e.target.classList.contains('trash-img')) {
+        eraseNote(e);
+    };
 });
 
 function checkFavPadding() {
