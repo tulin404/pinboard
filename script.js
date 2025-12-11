@@ -156,6 +156,7 @@ function createNewNote() {
     
     notesContainer.prepend(newNote);
 
+    checkTheme();
     clearNote();
     }
 };
@@ -189,7 +190,24 @@ function createNewReminder() {
     };
 };
 
-subReminderBtn.addEventListener('click', createNewReminder)
+subReminderBtn.addEventListener('click', createNewReminder);
+
+// SEARCHBAR
+const searchInput = document.getElementById('search-input');
+
+function searchNotes(){
+    const search = searchInput.value;
+    const noteBodysArray = Array.from(document.querySelectorAll('.note-body'));
+    noteBodysArray.forEach(noteBody => {
+        if(!noteBody.innerText.includes(search)) {
+            noteBody.closest('.note').style.display = 'none';
+        } else {
+            noteBody.closest('.note').style.display = 'block';
+        };
+    });
+};
+
+searchInput.addEventListener('input', searchNotes);
 
 // TYPING CHECK
 const titleCounter = document.getElementById('title-char-counter');
@@ -249,7 +267,10 @@ function favoriteNote(event) {
 // ERASE NOTE
 function eraseNote(event) {
     const noteTarget = event.target.closest('.note');
-    noteTarget.remove();
+    noteTarget.classList.add('move')
+    setTimeout(() => {
+        noteTarget.remove();
+    }, 1000);
 }
 
 
